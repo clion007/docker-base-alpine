@@ -1,6 +1,6 @@
-# Description: nginx version update checker
+# Description: alpine version update checker
 
-name: Nginx Update Checker
+name: Alpine Update Checker
 
 on:
   workflow_dispatch:
@@ -16,14 +16,14 @@ jobs:
     - name: Setup latest Alpine Linux
       uses: jirutka/setup-alpine@v1
 
-    - name: Get latest version of nginx
+    - name: Get latest version of alpine
       id: getVersion
       run: |
         version=$(cat /etc/alpine-release)
         echo "curentVersion=$version" >> $GITHUB_OUTPUT
       shell: alpine.sh {0}
 
-    - name: Compare nginx version
+    - name: Compare Alpine Version
       id: cacheVersion
       uses: actions/cache@v4
       with:
@@ -39,7 +39,7 @@ jobs:
       if: steps.cacheVersion.outputs.cache-hit != 'true'
       uses: peter-evans/repository-dispatch@v3
       with:
-        event-type: Nginx Image Update
+        event-type: Alpine Image Update
         
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
