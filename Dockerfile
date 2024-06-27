@@ -5,7 +5,7 @@ FROM alpine
 LABEL maintainer="Clion Nieh <76857061@qq.com>"
 
 # set timezone
-COPY  --chmod=755 root/ /
+COPY  root/ /
 
 # set entrypoint
 ENTRYPOINT ["/init"]
