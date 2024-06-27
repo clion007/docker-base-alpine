@@ -2,7 +2,7 @@
 FROM alpine
 
 # set label
-LABEL maintainer="Clion Nieh <76857061@qq.com>"
+LABEL maintainer="Clion Nieh  Email: clion007@126.com"
 
 # set timezone
 COPY  root/ /
