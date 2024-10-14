@@ -37,6 +37,7 @@ jobs:
         password: ${{ secrets.ALIYUN_TOKEN }}
 
     - name: Build and Push Docker images
+      id: build
       uses: docker/build-push-action@v5
       with:
         file: Dockerfile
@@ -47,6 +48,13 @@ jobs:
           clion007/alpine:${{ steps.getVersion.outputs.curentVersion }}
           registry.cn-chengdu.aliyuncs.com/clion/alpine:latest
           registry.cn-chengdu.aliyuncs.com/clion/alpine:${{ steps.getVersion.outputs.curentVersion }}
+      
+    - name: Publish Release
+      if: steps.build.outcome == 'success'
+      uses: ncipollo/release-action@v1
+      with:
+        name: Alpine Linux v${{ steps.getVersion.outputs.curentVersion }}
+        tag: v${{ steps.getVersion.outputs.curentVersion }}
         
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
