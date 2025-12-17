@@ -25,7 +25,7 @@ jobs:
 
     - name: Compare Alpine Version
       id: cacheVersion
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: .curentVersion
         key: ${{ steps.getVersion.outputs.curentVersion }}
