@@ -15,6 +15,9 @@ jobs:
     
     - name: Setup latest Alpine Linux
       uses: jirutka/setup-alpine@v1
+      with:
+        extra-repositories: |
+          https://dl-cdn.alpinelinux.org/latest-stable/main
 
     - name: Get latest version of alpine
       id: getVersion
